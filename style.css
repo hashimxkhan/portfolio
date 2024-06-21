@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    background-color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:  rgb(181, 181, 182);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+
+}
+
+.header {
+    display: flex;
+    gap: 45px;
+    font-size: 25px;
+    justify-content: flex-end;
+    padding-top: 25px;
+    padding-right: 50px;
+    text-shadow: 0 0 3.5px rgba(255, 255, 255, 0.925);
+}
+
+button {
+    all: unset;
+}
+
+
+.heading {
+    text-align: center;
+    padding-top: 250px;
+    font-weight: bold;
+    font-size: 35px;
+}
+.name {
+    padding-top: 30px;
+    font-size: 82px;
+    padding-bottom: 40px;
+}
+
+.intro {
+    font-size: 1.7em;
+    position: absolute;
+    width: fit-content;
+    height: 2em; 
+    overflow: hidden;
+    text-align: center;
+    margin-left: 440px;
+}
+
+.intro .visible{
+    position: absolute;
+    animation: fade 3s ease-in-out infinite;
+}
+
+@keyframes fade {
+    0%, 20%, 100% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+}
+
+.about {
+    padding-top: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+
+}
+
+.dot {
+    position: absolute;
+    width: 1.5px;
+    height: 1.5px;
+    background-color: rgb(65, 156, 253);
+    border-radius: 50%;
+}
+
+.moving-dot {
+    animation: move-down 50s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(100vw, 100vh);
+    }
+}
+
+@keyframes move-down {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100vh); /* Moves the dot from top to bottom */
+    }
+}
+
