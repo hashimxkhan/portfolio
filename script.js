@@ -1,57 +1,10 @@
-/* document.addEventListener("DOMContentLoaded", () => {
-    const dotContainer = document.createElement('div');
-    dotContainer.className = 'dots';
-    document.body.appendChild(dotContainer);
-
-    const initialFixedDotCount = 50; // Number of initial fixed dots
-    const initialMovingDotCount = 120; // Number of initial moving dots
-    const newDotsInterval = 6000; // Interval to add new moving dots in milliseconds
-    const newDotsCount = 10; // Number of new moving dots to add at each interval
-
-    function createDot(isMoving) {
-        const dot = document.createElement('div');
-        dot.className = 'dot';
-        if (isMoving) {
-            dot.classList.add('moving-dot');
-            dot.style.animationDelay = `${Math.random() * 20}s`;
-        }
-        dot.style.left = `${Math.random() * 100}vw`;
-        dot.style.top = `${Math.random() * 100}vh`;
-        dotContainer.appendChild(dot);
-
-        if (isMoving) {
-            // Remove the dot when the animation ends
-            dot.addEventListener('animationend', () => {
-                dot.remove();
-            });
-        }
-    }
-
-    // Create initial fixed dots
-    for (let i = 0; i < initialFixedDotCount; i++) {
-        createDot(false);
-    }
-
-    // Create initial moving dots
-    for (let i = 0; i < initialMovingDotCount; i++) {
-        createDot(true);
-    }
-
-    // Add new moving dots at regular intervals
-    setInterval(() => {
-        for (let i = 0; i < newDotsCount; i++) {
-            createDot(true);
-        }
-    }, newDotsInterval);
-});
-*/
 
 document.addEventListener("DOMContentLoaded", () => {
     const dotContainer = document.createElement('div');
     dotContainer.className = 'dots';
     document.body.appendChild(dotContainer);
 
-    const initialFixedDotCount = 60; // Number of initial fixed dots
+    const initialFixedDotCount = 90; // Number of initial fixed dots
     const initialMovingDotCount = 180; // Number of initial moving dots
 
     // Calculate the full document size
@@ -63,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dot.className = 'dot';
         if (isMoving) {
             dot.classList.add('moving-dot');
-            dot.style.animationDelay = `${Math.random() * 20}s`;
+            dot.style.animationDelay = `${Math.random() * 8}s`;
         }
 
         // Position the dot based on full document size
@@ -78,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 dot.remove();
             });
         }
+
     }
 
     // Create initial fixed dots
@@ -146,3 +100,47 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the word rotation
     typeWord(words[currentIndex], rotateWords);
 });
+
+
+// Scroll down to about for first button
+const scrollDown = document.querySelector(".scroll-down")
+const about = document.querySelector(".about")
+scrollDown.addEventListener("click", function() {
+    about.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    })
+})
+
+// scroll down to about from header
+const aboutButton = document.querySelector(".about-button")
+aboutButton.addEventListener("click", function() {
+    about.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    })
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const containers = document.querySelectorAll('.sub-container');
+    containers.forEach(container => {
+        observer.observe(container);
+    });
+});
+
+// functionality for about button
