@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     dotContainer.className = 'dots';
     document.body.appendChild(dotContainer);
 
-    const initialFixedDotCount = 90; // Number of initial fixed dots
-    const initialMovingDotCount = 180; // Number of initial moving dots
+    const initialFixedDotCount = 190; // Number of initial fixed dots
+    const initialMovingDotCount = 580; // Number of initial moving dots
 
     // Calculate the full document size
     const docWidth = document.documentElement.scrollWidth;
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dot.className = 'dot';
         if (isMoving) {
             dot.classList.add('moving-dot');
-            dot.style.animationDelay = `${Math.random() * 8}s`;
+            dot.style.animationDelay = `${Math.random() * 2}s`;
         }
 
         // Position the dot based on full document size
@@ -121,6 +121,8 @@ aboutButton.addEventListener("click", function() {
     })
 })
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
         root: null,
@@ -140,6 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const containers = document.querySelectorAll('.sub-container');
     containers.forEach(container => {
         observer.observe(container);
+    });
+});
+
+
+// Scroll down to expertise from about section
+const scrollToExpertise = document.querySelector(".scroll-to-expertise");
+const expertise = document.querySelector("#expertise");
+
+scrollToExpertise.addEventListener("click", function() {
+    expertise.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
     });
 });
 
