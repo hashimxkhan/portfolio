@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const dotContainer = document.createElement('div');
     dotContainer.className = 'dots';
@@ -59,8 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const words = ["Software ‎  Engineer", "FullStack Developer", "Computer Scientist"];
     let currentIndex = 0;
@@ -101,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
     typeWord(words[currentIndex], rotateWords);
 });
 
-
 // Scroll down to about for first button
 const scrollDown = document.querySelector(".scroll-down")
 const about = document.querySelector(".about")
@@ -120,8 +116,6 @@ aboutButton.addEventListener("click", function() {
         block: "start"
     })
 })
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
@@ -145,13 +139,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 // Scroll down to expertise from about section
 const scrollToExpertise = document.querySelector(".scroll-to-expertise");
 const expertise = document.querySelector("#expertise");
 
 scrollToExpertise.addEventListener("click", function() {
     expertise.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
+// Scroll down to projects from expertise section
+const scrollToProjects = document.querySelector(".scroll-to-projects");
+const projects = document.querySelector("#projects");
+
+scrollToProjects.addEventListener("click", function() {
+    projects.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
+// Scroll down to contact from projects section
+const scrollToContact = document.querySelector(".scroll-to-contact");
+const contact = document.querySelector("#contact");
+
+scrollToContact.addEventListener("click", function() {
+    contact.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
