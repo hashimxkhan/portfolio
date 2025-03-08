@@ -124,6 +124,59 @@ aboutButton.addEventListener("click", function() {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all section elements
+    const about = document.querySelector(".about");
+    const languages = document.querySelector("#languages");
+    const projects = document.querySelector("#projects");
+    const contact = document.querySelector("#contact");
+
+    // First down arrow to About section
+    const scrollDown = document.querySelector(".scroll-down");
+    scrollDown.addEventListener("click", () => {
+        about.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // About to Languages section
+    const scrollToLanguages = document.querySelector(".scroll-to-languages");
+    scrollToLanguages.addEventListener("click", () => {
+        languages.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // Languages to Projects section
+    const scrollToProjects = document.querySelector(".scroll-to-projects");
+    scrollToProjects.addEventListener("click", () => {
+        projects.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // Projects to Contact section
+    const scrollToContact = document.querySelector(".scroll-to-contact");
+    scrollToContact.addEventListener("click", () => {
+        contact.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // Header navigation buttons
+    const headerButtons = document.querySelectorAll('.header button');
+    headerButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const text = this.textContent.toLowerCase();
+            switch(text) {
+                case 'about':
+                    about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+                case 'languages':
+                    languages.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+                case 'projects':
+                    projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+                case 'contact':
+                    contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+            }
+        });
+    });
+
+    // Intersection Observer for animations
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -145,57 +198,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Scroll down to expertise from about section
-const scrollToExpertise = document.querySelector(".scroll-to-expertise");
-const expertise = document.querySelector("#expertise");
+// Scroll down to languages from about section
+const scrollToLanguages = document.querySelector(".scroll-to-languages");
+const languages = document.querySelector("#languages");
 
-scrollToExpertise.addEventListener("click", function() {
-    expertise.scrollIntoView({
+scrollToLanguages.addEventListener("click", function() {
+    languages.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
 });
 
-// Scroll down to projects from expertise section
-const scrollToProjects = document.querySelector(".scroll-to-projects");
-const projects = document.querySelector("#projects");
-
-scrollToProjects.addEventListener("click", function() {
-    projects.scrollIntoView({
+// scroll down to languages from header
+const languagesButton = document.querySelector(".header button:nth-child(2)");
+languagesButton.addEventListener("click", function() {
+    languages.scrollIntoView({
         behavior: "smooth",
         block: "start"
-    });
-});
-
-// Scroll down to contact from projects section
-const scrollToContact = document.querySelector(".scroll-to-contact");
-const contact = document.querySelector("#contact");
-
-scrollToContact.addEventListener("click", function() {
-    contact.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-});
-
-// functionality for about button
-
-// Header button scroll functionality
-const headerButtons = document.querySelectorAll('.header button');
-headerButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const text = this.textContent.toLowerCase();
-        switch(text) {
-            case 'expertise':
-                expertise.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                break;
-            case 'projects':
-                projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                break;
-            case 'contact':
-                contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                break;
-            // About button is already handled
-        }
     });
 });

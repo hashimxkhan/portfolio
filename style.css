@@ -103,7 +103,7 @@ body {
 }
 
 .scroll-down, 
-.scroll-to-expertise,
+.scroll-to-languages,
 .scroll-to-projects,
 .scroll-to-contact {
     display: block;
@@ -121,7 +121,7 @@ body {
 }
 
 .scroll-down:hover, 
-.scroll-to-expertise:hover,
+.scroll-to-languages:hover,
 .scroll-to-projects:hover,
 .scroll-to-contact:hover {
     color: rgb(65, 156, 253);
@@ -208,13 +208,13 @@ body {
     }
 }
 
-.expertise {
+.languages {
     text-align: center;
     padding: 100px 50px;
     color: rgb(181, 181, 182);
 }
 
-.expertise h2 {
+.languages h2 {
     font-size: 40px;
     margin-bottom: 50px;
     color: rgb(181, 181, 182);
@@ -223,7 +223,7 @@ body {
     display: inline-block;
 }
 
-.expertise h2:hover {
+.languages h2:hover {
     text-shadow: 0 0 25px rgba(65, 156, 253, 0.7);
 }
 
@@ -537,5 +537,24 @@ body {
     text-shadow: 0 0 15px rgba(65, 156, 253, 0.6);
     box-shadow: 0 0 20px rgba(65, 156, 253, 0.4);
     transform: scale(1.1);
+}
+
+.expertise {
+    text-align: center;
+    padding: 100px 50px;
+    color: rgb(181, 181, 182);
+}
+
+.expertise h2 {
+    font-size: 40px;
+    margin-bottom: 50px;
+    color: rgb(181, 181, 182);
+    text-shadow: 0 0 15px rgba(65, 156, 253, 0.5);
+    position: relative;
+    display: inline-block;
+}
+
+.expertise h2:hover {
+    text-shadow: 0 0 25px rgba(65, 156, 253, 0.7);
 }
 
