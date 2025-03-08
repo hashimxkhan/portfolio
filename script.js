@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     dotContainer.className = 'dots';
     document.body.appendChild(dotContainer);
 
-    const initialFixedDotCount = 190; // Number of initial fixed dots
-    const initialMovingDotCount = 580; // Number of initial moving dots
+    const initialFixedDotCount = 150; // Number of initial fixed dots
+    const initialMovingDotCount = 280; // Number of initial moving dots
 
-    // Calculate the full document size
-    const docWidth = document.documentElement.scrollWidth;
-    const docHeight = document.documentElement.scrollHeight;
+    // Use viewport dimensions instead of document size
+    const docWidth = window.innerWidth;
+    const viewHeight = window.innerHeight;
 
     function createDot(isMoving) {
         const dot = document.createElement('div');
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
             dot.style.animationDelay = `${Math.random() * 2}s`;
         }
 
-        // Position the dot based on full document size
+        // Position the dot within viewport
         dot.style.left = `${Math.random() * docWidth}px`;
-        dot.style.top = `${Math.random() * docHeight}px`;
+        dot.style.top = `${Math.random() * viewHeight}px`;
 
         dotContainer.appendChild(dot);
 
@@ -55,6 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
             createDot(true);
         }
     }, 1);
+
+    // Update dimensions on window resize
+    window.addEventListener('resize', () => {
+        docWidth = window.innerWidth;
+        viewHeight = window.innerHeight;
+    });
 
 });
 
@@ -173,3 +179,23 @@ scrollToContact.addEventListener("click", function() {
 });
 
 // functionality for about button
+
+// Header button scroll functionality
+const headerButtons = document.querySelectorAll('.header button');
+headerButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const text = this.textContent.toLowerCase();
+        switch(text) {
+            case 'expertise':
+                expertise.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                break;
+            case 'projects':
+                projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                break;
+            case 'contact':
+                contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                break;
+            // About button is already handled
+        }
+    });
+});
