@@ -558,3 +558,167 @@ body {
     text-shadow: 0 0 25px rgba(65, 156, 253, 0.7);
 }
 
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .header {
+        gap: 20px;
+        padding-right: 20px;
+        font-size: 20px;
+        justify-content: center;
+    }
+
+    .heading {
+        padding-top: 150px;
+        font-size: 28px;
+    }
+
+    .greeting {
+        font-size: 28px;
+    }
+
+    .name {
+        font-size: 50px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .intro {
+        font-size: 1.4em;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .about {
+        padding: 150px 20px 50px 20px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about p {
+        font-size: 16px;
+    }
+
+    .about br {
+        display: none;
+    }
+
+    .picture {
+        margin: 40px auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    .icons-container {
+        gap: 20px;
+    }
+
+    .icon-card {
+        width: 120px;
+        height: 120px;
+    }
+
+    .icon-card img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .assembly-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 22px;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .contact {
+        padding: 100px 20px 50px 20px;
+    }
+
+    .contact h2 {
+        font-size: 40px;
+    }
+
+    .email-button {
+        padding: 15px 30px;
+        font-size: 24px;
+    }
+
+    .social-links {
+        gap: 30px;
+    }
+
+    .social-link img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+    .header {
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .heading {
+        padding-top: 120px;
+    }
+
+    .name {
+        font-size: 40px;
+    }
+
+    .intro {
+        font-size: 1.2em;
+    }
+
+    .about {
+        padding: 120px 15px 40px 15px;
+    }
+
+    .picture {
+        width: 150px;
+        height: 150px;
+    }
+
+    .icon-card {
+        width: 100px;
+        height: 100px;
+    }
+
+    .icon-card img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .assembly-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .email-button {
+        padding: 12px 25px;
+        font-size: 20px;
+    }
+
+    .social-link img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Fix for intro text on medium screens */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .intro {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
