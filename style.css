@@ -56,6 +56,10 @@ body {
     padding-top: 200px;
     font-weight: bold;
     font-size: 35px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .greeting {
@@ -86,15 +90,20 @@ body {
 
 .intro {
     font-size: 1.7em;
-    position: absolute;
-    width: fit-content;
     height: 2em; 
     overflow: hidden;
     text-align: center;
-    margin-left: 440px;
     color: rgb(181, 181, 182);
     text-shadow: 0 0 15px rgba(65, 156, 253, 0.4);
     transition: all 0.3s ease;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.intro .visible {
+    width: fit-content;
 }
 
 .intro:hover {
