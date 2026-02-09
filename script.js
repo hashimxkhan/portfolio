@@ -1,219 +1,228 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const dotContainer = document.createElement('div');
-    dotContainer.className = 'dots';
-    document.body.appendChild(dotContainer);
-
-    const initialFixedDotCount = 150; // Number of initial fixed dots
-    const initialMovingDotCount = 280; // Number of initial moving dots
-
-    // Use viewport dimensions instead of document size
-    const docWidth = window.innerWidth;
-    const viewHeight = window.innerHeight;
-
-    function createDot(isMoving) {
-        const dot = document.createElement('div');
-        dot.className = 'dot';
-        if (isMoving) {
-            dot.classList.add('moving-dot');
-            dot.style.animationDelay = `${Math.random() * 2}s`;
-        }
-
-        // Position the dot within viewport
-        dot.style.left = `${Math.random() * docWidth}px`;
-        dot.style.top = `${Math.random() * viewHeight}px`;
-
-        dotContainer.appendChild(dot);
-
-        if (isMoving) {
-            // Remove the dot when the animation ends
-            dot.addEventListener('animationend', () => {
-                dot.remove();
-            });
-        }
-
-    }
-
-    // Create initial fixed dots
-    for (let i = 0; i < initialFixedDotCount; i++) {
-        createDot(false);
-    }
-
-    // Create initial moving dots
-    for (let i = 0; i < initialMovingDotCount; i++) {
-        createDot(true);
-    }
-
-    if (isMoving) {
-        // Remove the dot when the animation ends
-        dot.addEventListener('animationend', () => {
-            dot.remove();
-        });
-    }
-
-    setInterval(() => {
-        for (let i = 0; i < 500; i++) {
-            createDot(true);
-        }
-    }, 1);
-
-    // Update dimensions on window resize
-    window.addEventListener('resize', () => {
-        docWidth = window.innerWidth;
-        viewHeight = window.innerHeight;
-    });
-
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const words = ["Software ‎  Engineer", "FullStack Developer", "Computer Scientist"];
-    let currentIndex = 0;
-    const rotatingWordElement = document.querySelector(".intro");
-
-    function typeWord(word, callback) {
-        let charIndex = 0;
-        const typeInterval = setInterval(() => {
-            rotatingWordElement.textContent += word[charIndex];
-            charIndex++;
-            if (charIndex === word.length) {
-                clearInterval(typeInterval);
-                setTimeout(callback, 1500); // Pause before deleting
-            }
-        }, 30); // Typing speed
-    }
-
-    function deleteWord(callback) {
-        let charIndex = rotatingWordElement.textContent.length;
-        const deleteInterval = setInterval(() => {
-            rotatingWordElement.textContent = rotatingWordElement.textContent.slice(0, -1);
-            charIndex--;
-            if (charIndex === 0) {
-                clearInterval(deleteInterval);
-                callback();
-            }
-        }, 25); // Deleting speed
-    }
-
-    function rotateWords() {
-        deleteWord(() => {
-            currentIndex = (currentIndex + 1) % words.length;
-            typeWord(words[currentIndex], rotateWords);
-        });
-    }
-
-    // Start the word rotation
-    typeWord(words[currentIndex], rotateWords);
-});
-
-// Scroll down to about for first button
-const scrollDown = document.querySelector(".scroll-down")
-const about = document.querySelector(".about")
-scrollDown.addEventListener("click", function() {
-    about.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    })
-})
-
-// scroll down to about from header
-const aboutButton = document.querySelector(".about-button")
-aboutButton.addEventListener("click", function() {
-    about.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    })
-})
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all section elements
-    const about = document.querySelector(".about");
-    const languages = document.querySelector("#languages");
-    const projects = document.querySelector("#projects");
-    const contact = document.querySelector("#contact");
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // First down arrow to About section
-    const scrollDown = document.querySelector(".scroll-down");
-    scrollDown.addEventListener("click", () => {
-        about.scrollIntoView({ behavior: "smooth", block: "start" });
+  const nav = document.querySelector('.site-nav');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelectorAll('[data-scroll]');
+  const sections = document.querySelectorAll('main section[id]');
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.getAttribute('href');
+      if (!targetId || !targetId.startsWith('#')) {
+        return;
+      }
+
+      const target = document.querySelector(targetId);
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      if (nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+
+        const matchingLink = document.querySelector(`.site-nav a[href="#${entry.target.id}"]`);
+        if (matchingLink && entry.isIntersecting) {
+          document.querySelectorAll('.site-nav a').forEach((a) => a.classList.remove('active'));
+          matchingLink.classList.add('active');
+        }
+      });
+    },
+    { threshold: 0.38 }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
+
+  const typedRole = document.getElementById('typed-role');
+  const phrases = [
+    'OS & Network Systems Engineer',
+    'Data Pipeline Builder',
+    'Linux Developer'
+  ];
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  if (prefersReducedMotion) {
+    if (typedRole) {
+      typedRole.textContent = phrases[0];
+    }
+    sections.forEach((section) => section.classList.add('in-view'));
+    return;
+  }
+
+  function tickType() {
+    if (!typedRole) {
+      return;
+    }
+
+    const currentPhrase = phrases[phraseIndex];
+    typedRole.textContent = deleting
+      ? currentPhrase.slice(0, charIndex--)
+      : currentPhrase.slice(0, charIndex++);
+
+    let delay = deleting ? 45 : 70;
+
+    if (!deleting && charIndex > currentPhrase.length) {
+      deleting = true;
+      delay = 1200;
+      charIndex = currentPhrase.length;
+    } else if (deleting && charIndex < 0) {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 250;
+      charIndex = 0;
+    }
+
+    window.setTimeout(tickType, delay);
+  }
+
+  tickType();
+
+  const canvas = document.getElementById('starfield');
+  if (!canvas) {
+    return;
+  }
+
+  const ctx = canvas.getContext('2d');
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let animationFrameId;
+  let stars = [];
+  let maxDepth = 1800;
+  let fov = 920;
+  let centerX = 0;
+  let centerY = 0;
+  let cameraX = 0;
+  let cameraY = 0;
+  let targetCameraX = 0;
+  let targetCameraY = 0;
+
+  function resetStar(star, fresh = false) {
+    star.x = (Math.random() - 0.5) * width * 2.2;
+    star.y = (Math.random() - 0.5) * height * 2.2;
+    star.z = fresh ? Math.random() * maxDepth + 1 : maxDepth;
+    star.pz = star.z;
+  }
+
+  function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    centerX = width * 0.5;
+    centerY = height * 0.5;
+    maxDepth = Math.max(width, height) * 2.2;
+    fov = Math.max(780, width * 0.62);
+
+    const starCount = Math.floor((width * height) / 3200);
+    stars = Array.from({ length: starCount }, () => {
+      const star = {};
+      resetStar(star, true);
+      return star;
+    });
+  }
+
+  function drawStarfield() {
+    ctx.clearRect(0, 0, width, height);
+    cameraX += (targetCameraX - cameraX) * 0.025;
+    cameraY += (targetCameraY - cameraY) * 0.025;
+
+    stars.forEach((star) => {
+      star.pz = star.z;
+      const warp = 0.65;
+      const depthFactor = 1 - star.z / maxDepth;
+      star.z -= (0.2 + depthFactor * warp) * 2.2;
+      if (star.z <= 1) {
+        resetStar(star);
+      }
+
+      const sx = (star.x / star.z) * fov + centerX + cameraX * depthFactor;
+      const sy = (star.y / star.z) * fov + centerY + cameraY * depthFactor;
+      const px = (star.x / star.pz) * fov + centerX + cameraX * depthFactor;
+      const py = (star.y / star.pz) * fov + centerY + cameraY * depthFactor;
+
+      if (sx < -60 || sx > width + 60 || sy < -60 || sy > height + 60) {
+        resetStar(star);
+        return;
+      }
+
+      const alpha = 0.12 + depthFactor * 0.5;
+      const size = depthFactor > 0.9 ? 2 : 1;
+      ctx.strokeStyle = `rgba(210, 228, 255, ${alpha})`;
+      ctx.lineWidth = size;
+      ctx.beginPath();
+      ctx.moveTo(px, py);
+      ctx.lineTo(sx, sy);
+      ctx.stroke();
+      ctx.fillStyle = `rgba(240, 248, 255, ${Math.min(0.78, alpha + 0.08)})`;
+      ctx.fillRect(Math.round(sx), Math.round(sy), size, size);
     });
 
-    // About to Languages section
-    const scrollToLanguages = document.querySelector(".scroll-to-languages");
-    scrollToLanguages.addEventListener("click", () => {
-        languages.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    animationFrameId = window.requestAnimationFrame(drawStarfield);
+  }
 
-    // Languages to Projects section
-    const scrollToProjects = document.querySelector(".scroll-to-projects");
-    scrollToProjects.addEventListener("click", () => {
-        projects.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+  resizeCanvas();
+  animationFrameId = window.requestAnimationFrame(drawStarfield);
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('mousemove', (event) => {
+    const nx = event.clientX / Math.max(width, 1) - 0.5;
+    const ny = event.clientY / Math.max(height, 1) - 0.5;
+    targetCameraX = nx * 28;
+    targetCameraY = ny * 20;
+  }, { passive: true });
 
-    // Projects to Contact section
-    const scrollToContact = document.querySelector(".scroll-to-contact");
-    scrollToContact.addEventListener("click", () => {
-        contact.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+  const root = document.documentElement;
+  let scrollTicking = false;
 
-    // Header navigation buttons
-    const headerButtons = document.querySelectorAll('.header button');
-    headerButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const text = this.textContent.toLowerCase();
-            switch(text) {
-                case 'about':
-                    about.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    break;
-                case 'languages':
-                    languages.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    break;
-                case 'projects':
-                    projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    break;
-                case 'contact':
-                    contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    break;
-            }
-        });
-    });
+  function updateScrollGradient() {
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+    root.style.setProperty('--scroll-progress', progress.toFixed(4));
+    scrollTicking = false;
+  }
 
-    // Intersection Observer for animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+  function onScroll() {
+    if (scrollTicking) {
+      return;
+    }
+    scrollTicking = true;
+    window.requestAnimationFrame(updateScrollGradient);
+  }
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+  updateScrollGradient();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-    const containers = document.querySelectorAll('.sub-container');
-    containers.forEach(container => {
-        observer.observe(container);
-    });
-});
-
-// Scroll down to languages from about section
-const scrollToLanguages = document.querySelector(".scroll-to-languages");
-const languages = document.querySelector("#languages");
-
-scrollToLanguages.addEventListener("click", function() {
-    languages.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-});
-
-// scroll down to languages from header
-const languagesButton = document.querySelector(".header button:nth-child(2)");
-languagesButton.addEventListener("click", function() {
-    languages.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+  window.addEventListener('beforeunload', () => {
+    window.cancelAnimationFrame(animationFrameId);
+  });
 });
