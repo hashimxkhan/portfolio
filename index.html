@@ -7,14 +7,12 @@
   <meta name="description" content="Portfolio of Hashim Khan, Computer Science student focused on systems programming, performance, and full-stack development.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png" type="image/png">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
-
   <header class="site-header">
     <a class="brand" href="#home" data-scroll>
       <span class="brand-mark">HK</span>
@@ -30,8 +28,6 @@
 
     <nav id="site-nav" class="site-nav" aria-label="Primary">
       <a href="#about" data-scroll>About</a>
-      <a href="#experience" data-scroll>Experience</a>
-      <a href="#skills" data-scroll>Skills</a>
       <a href="#projects" data-scroll>Projects</a>
       <a href="#contact" data-scroll>Contact</a>
     </nav>
@@ -39,271 +35,109 @@
 
   <main id="home">
     <section class="hero section">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Mission Control</p>
-          <h1>Engineering software that runs close to the metal.</h1>
-          <p class="hero-subtitle">
-            I am Hashim Khan, a Purdue computer science student building systems and Python tools at the
-            intersection of operating systems, networks, and data analysis.
-          </p>
-          <div class="focus-clusters" aria-label="Core interests">
-            <article>
-              <p class="cluster-kicker">OS</p>
-              <p>Kernel-level tooling, Linux internals, and low-level diagnostics.</p>
-            </article>
-            <article>
-              <p class="cluster-kicker">Networks</p>
-              <p>Protocol-aware systems, traffic visibility, and resilient communication flows.</p>
-            </article>
-            <article>
-              <p class="cluster-kicker">Data Analysis</p>
-              <p>Python pipelines, trend extraction, and analytics-driven system decisions.</p>
-            </article>
-          </div>
-          <p class="typed-wrap">
-            Current role:
-            <span id="typed-role" aria-live="polite"></span>
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects" data-scroll>Explore Projects</a>
-            <a class="button ghost" href="mailto:hashimxkhann@gmail.com">Open Comms</a>
-          </div>
-          <a class="jump-link" href="#about" data-scroll>Enter orbit ↓</a>
+      <div class="hero-inner">
+        <div class="avatar">
+          <img src="picture4.jpg" alt="Photo of Hashim Khan">
         </div>
-        <aside class="console-panel" aria-label="Systems overview">
-          <p class="console-title">SYS-TERMINAL // LIVE</p>
-          <p><span class="prompt">$</span> uname -a</p>
-          <p class="console-out">Linux • x86_64 • systems + network tooling</p>
-          <p><span class="prompt">$</span> python3 pipelines/battery_analysis.py --summary</p>
-          <p class="console-out">degradation trendline computed • signal-to-noise stabilized</p>
-          <div class="telemetry">
-            <span>OS Observability</span>
-            <span>Network Flow</span>
-            <span>Python Analytics</span>
-          </div>
-        </aside>
+        <h1>Hashim Khan</h1>
+        <p class="kicker">Builder, gymrat, physics nerd</p>
+        <div class="hero-buttons">
+          <a class="button primary" href="#about" data-scroll>About Me</a>
+          <a class="button ghost" href="#projects" data-scroll>Projects</a>
+          <a class="button ghost" href="#contact" data-scroll>Contact</a>
+        </div>
       </div>
     </section>
 
-    <section id="about" class="section reveal">
+    <section id="about" class="section">
       <div class="section-heading">
-        <p class="eyebrow">About + Education</p>
         <h2>Who I Am</h2>
       </div>
       <div class="about-grid">
-        <article class="panel">
-          <p>
-            I am currently studying computer science at Purdue University in West Lafayette, Indiana.
-            I have explored web development, data analysis, and low-level programming, with my strongest
-            interests in operating systems, networks, and scalable & automated pipelines.
-          </p>
-          <p>
-            I enjoy building with C, Python, and Linux tooling to understand how software behaves under
-            real system constraints. I especially like data & automation pipelines that turn raw runtime signals
-            into practical insights for debugging and optimization and make engineering workflows faster.
-          </p>
-          <div class="stat-row">
-            <div>
-              <p class="stat-label">Focus</p>
-              <p class="stat-value">OS + Networks + Data</p>
-            </div>
-            <div>
-              <p class="stat-label">Base</p>
-              <p class="stat-value">Purdue University</p>
-            </div>
+        <p class="about-copy">
+          I'm a computer science student at Purdue University with a focus on systems
+          programming and AI infrastructure. In my free time, I like to write low-level C code,
+          play soccer, and read physics blogs.
+        </p>
+        <dl class="spec-list">
+          <div>
+            <dt>Focus</dt>
+            <dd>Systems programming, AI infrastructure</dd>
           </div>
-          <div class="edu-row">
-            <div>
-              <p class="stat-label">Degree</p>
-              <p class="stat-value">Computer Science</p>
-            </div>
-            <div>
-              <p class="stat-label">GPA</p>
-              <p class="stat-value">3.71</p>
-            </div>
-            <div>
-              <p class="stat-label">Relevant Coursework</p>
-              <p class="stat-value">Operating Systems, Computer Networking, Systems Programming, DSA, OOP, Databases, Programming in C</p>
-            </div>
+          <div>
+            <dt>University</dt>
+            <dd>Purdue University</dd>
           </div>
-        </article>
+          <div>
+            <dt>Degree</dt>
+            <dd>Computer Science</dd>
+          </div>
+          <div>
+            <dt>GPA</dt>
+            <dd>3.72</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
-    <section id="experience" class="section reveal">
+    <section id="projects" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Experience</p>
-        <h2>Leadership + Engineering</h2>
-      </div>
-      <div class="experience-grid">
-        <article class="experience-card panel">
-          <div class="xp-head">
-            <h3>Lead Researcher</h3>
-            <p>The Data Mine | Aug 2025 - Present</p>
-          </div>
-          <ul>
-            <li>Led a 14-member team analyzing a 600,000-member dataset with Agile/Kanban execution and consistent milestone delivery.</li>
-            <li>Built SQL + Python (Pandas/NumPy) pipelines and integrated Power BI dashboards for ongoing insights.</li>
-            <li>Delivered modeling and visualization workflows with Scikit-learn, Seaborn, Matplotlib, and Plotly.</li>
-          </ul>
-        </article>
-        <article class="experience-card panel">
-          <div class="xp-head">
-            <h3>Software Engineer Intern</h3>
-            <p>Ingenico | May 2025 - Aug 2025</p>
-          </div>
-          <ul>
-            <li>Built a full-stack Android app in Kotlin/Jetpack Compose with REST APIs for payment transaction demos.</li>
-            <li>Containerized with Docker and deployed via AWS ECS for internal Fortune 500 sales engineering workflows.</li>
-            <li>Resolved MkDocs Python dependency and SSL issues; migrated legacy scripts to Python and integrated Jenkins CI/CD automation.</li>
-          </ul>
-        </article>
-        <article class="experience-card panel">
-          <div class="xp-head">
-            <h3>Undergraduate Researcher</h3>
-            <p>AstraZeneca | Jan 2025 - May 2025</p>
-          </div>
-          <ul>
-            <li>Partnered with AstraZeneca Mt. Vernon and The Data Mine at Purdue to develop internal products for onsite teams.</li>
-            <li>Implemented a digital logbook system for batch material tracking, improving traceability and compliance workflows.</li>
-            <li>Collaborated across teams to integrate the logbook with existing databases for real-time data access and streamlined operations.</li>
-          </ul>
-        </article>
-        <article class="experience-card panel">
-          <div class="xp-head">
-            <h3>Undergraduate Researcher</h3>
-            <p>BASF | Jan 2024 - May 2024</p>
-          </div>
-          <ul>
-            <li>Cleaned and optimized crop yield datasets (1960-2022), reducing data irregularities by 25%.</li>
-            <li>Built Linear Regression and Random Forest models for yield forecasting, achieving strong predictive performance.</li>
-            <li>Conducted feature engineering and exploratory data analysis to identify key drivers of crop yield variability.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills" class="section reveal">
-      <div class="section-heading">
-        <p class="eyebrow">Tech Stack</p>
-        <h2>Languages + Tooling</h2>
-      </div>
-      <div class="skills-grid">
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C logo">
-          <h3>C</h3>
-          <p>Low-level control and performance-sensitive work.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python logo">
-          <h3>Python</h3>
-          <p>Scripting, data work, and practical prototyping.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java logo">
-          <h3>Java</h3>
-          <p>Object-oriented backend and academic projects.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript logo">
-          <h3>JavaScript</h3>
-          <p>Interactive web interfaces and product polish.</p>
-        </article>
-        <article class="skill-card asm">
-          <div class="asm-chip" aria-hidden="true">ASM</div>
-          <h3>x86 Assembly</h3>
-          <p>Hardware-level reasoning and instruction-level debugging.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ logo">
-          <h3>C++</h3>
-          <p>Systems-level programming and performance-aware implementations.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin logo">
-          <h3>Kotlin</h3>
-          <p>Android development with Jetpack Compose and API integrations.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash logo">
-          <h3>Bash</h3>
-          <p>Automation scripts and Linux workflow acceleration.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL logo">
-          <h3>SQL</h3>
-          <p>Data pipeline querying, transformation, and analytics support.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React logo">
-          <h3>React</h3>
-          <p>Interactive frontends for data-driven and product-centric interfaces.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS logo">
-          <h3>AWS</h3>
-          <p>Cloud deployment workflows including ECS-based container orchestration.</p>
-        </article>
-        <article class="skill-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker logo">
-          <h3>Docker</h3>
-          <p>Containerized development, packaging, and reproducible system environments.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="projects" class="section reveal">
-      <div class="section-heading">
-        <p class="eyebrow">Launch History</p>
         <h2>Projects</h2>
       </div>
-      <div class="project-grid">
-        <article class="project-card">
-          <h3>Battery Degradation Analysis Pipeline</h3>
-          <p>
-            End-to-end battery health analysis pipeline for tracking degradation trends and extracting actionable performance insights.
-          </p>
-          <div class="tag-row">
-            <span>Analytics</span>
-            <span>Python</span>
-            <span>Pipeline</span>
+      <div class="project-list">
+        <article class="project-row">
+          <div class="project-row-head">
+            <h3>Purdue Seat Notifier</h3>
+            <a href="https://github.com/hashimxkhan/purdue-seat-watch" target="_blank" rel="noopener noreferrer">View on GitHub</a>
           </div>
-          <a href="https://github.com/hashimxkhan/battery-degradation-analysis" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <p>Real-time Purdue course seat tracker that emails students the moment a spot opens.</p>
+          <p class="project-meta">Python, FastAPI, PostgreSQL, Docker, JavaScript</p>
         </article>
-        <article class="project-card">
-          <h3>RoomFinder</h3>
-          <p>
-            Room scheduling application designed to improve space utilization and reduce booking friction.
-          </p>
-          <div class="tag-row">
-            <span>Scheduling</span>
-            <span>Web App</span>
-            <span>UX</span>
+        <article class="project-row">
+          <div class="project-row-head">
+            <h3>Autonomous AI Rover</h3>
+            <a href="https://devpost.com/software/tars-s32utf?ref_content=user-portfolio" target="_blank" rel="noopener noreferrer">View on Devpost</a>
           </div>
-          <a href="https://github.com/btyneo/RoomLocatorDeutschland" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <p>Voice-controlled rover pairing Raspberry Pi sensors with Whisper, Llama 3, and a live React dashboard.</p>
+          <p class="project-meta">Python, React, Flask, Raspberry Pi, Ollama</p>
         </article>
-        <article class="project-card">
-          <h3>Linux Kernel Tools Suite</h3>
-          <p>
-            Collection of Linux kernel-focused tools for systems inspection, low-level diagnostics, and workflow acceleration.
-          </p>
-          <div class="tag-row">
-            <span>Linux</span>
-            <span>Kernel</span>
-            <span>Systems</span>
+        <article class="project-row">
+          <div class="project-row-head">
+            <h3>Linux Kernel Tools Suite</h3>
+            <a href="https://github.com/hashimxkhan/linux-kernel-tools-suite" target="_blank" rel="noopener noreferrer">View on GitHub</a>
           </div>
-          <a href="https://github.com/hashimxkhan/linux-kernel-tools-suite" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <p>Inspects kernel process, scheduler, and TCP socket state by parsing /proc directly.</p>
+          <p class="project-meta">C, C++, Docker</p>
+        </article>
+        <article class="project-row">
+          <div class="project-row-head">
+            <h3>Multithreaded HTTP Server</h3>
+            <span class="project-status">Private repository</span>
+          </div>
+          <p>Thread-pooled HTTP/1.1 server handling concurrent, persistent, pipelined connections.</p>
+          <p class="project-meta">C, C++, HTTP, TCP/IP, Linux</p>
+        </article>
+        <article class="project-row">
+          <div class="project-row-head">
+            <h3>Dynamic Memory Allocator</h3>
+            <span class="project-status">Private repository</span>
+          </div>
+          <p>A malloc/free implementation managing heap memory from scratch.</p>
+          <p class="project-meta">C, C++</p>
+        </article>
+        <article class="project-row">
+          <div class="project-row-head">
+            <h3>Custom Unix Shell</h3>
+            <span class="project-status">Private repository</span>
+          </div>
+          <p>A Unix shell built from scratch with built-ins, environment expansion, and regex support.</p>
+          <p class="project-meta">C, C++</p>
         </article>
       </div>
     </section>
 
-    <section id="contact" class="section reveal">
-      <div class="section-heading">
-        <p class="eyebrow">Contact</p>
-        <h2>Let’s Build Something</h2>
-      </div>
-      <article class="contact-panel">
+    <section id="contact" class="section">
+      <article class="panel contact-panel">
         <a class="button primary" href="mailto:hashimxkhann@gmail.com">Send an Email</a>
         <div class="socials">
           <a href="https://github.com/hashimxkhan" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
